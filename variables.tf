@@ -36,6 +36,12 @@ variable "hvn_cidr" {
   default = "172.25.16.0/20"
 }
 
+variable "hvn_id" {
+  description = "The ID of the HCP HVN."
+  type        = string
+  default     = "hcp-vault-hvn"
+}
+
 variable "vpc_cidr" {
   type = string
   default = "10.0.1.0/24"
