@@ -1,4 +1,4 @@
-output "HCP_CONSUL_ADDR" {
+output "CONSUL_HTTP_ADDR" {
     value = hcp_consul_cluster.example_hcp.consul_private_endpoint_url
 }
 
