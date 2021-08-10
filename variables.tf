@@ -19,6 +19,18 @@ variable "public_key" {
   type = string
 }
 
+variable "hcp_consul_cluster_id" {
+  description = "The ID of the HCP Consul cluster."
+  type        = string
+  default     = "hcp-consul-cluster"
+}
+
+variable "hcp_vault_cluster_id" {
+  description = "The ID of the HCP Vault cluster."
+  type        = string
+  default     = "hcp-vault-cluster"
+}
+
 variable "hvn_cidr" {
   type = string
   default = "172.25.16.0/20"
@@ -30,6 +42,6 @@ variable "vpc_cidr" {
 }
 
 variable "az" {
-  type = string 
+  type = string
   default = "us-west-2a"
 }

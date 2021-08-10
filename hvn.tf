@@ -1,15 +1,25 @@
+// Define HashiCorp Virtual Network (HVN)
 resource "hcp_hvn" "example_hvn" {
-  hvn_id         = "${var.Name}-example-hvn"
+  hvn_id         = var.hvn_id # "${var.Name}-example-hvn"
   cloud_provider = "aws"
   region         = var.region
   cidr_block     = var.hvn_cidr
 }
 
+// Define HCP Consul Cluster
+resource "hcp_consul_cluster" "example_hcp" {
+  hvn_id          = hcp_hvn.example_hvn.hvn_id
+  cluster_id      = var.hcp_consul_cluster_id
+  tier            = "development" # development, standard, plus; Vault
+  public_endpoint = false # default is false
+}
+
+// Define HCP Vault Cluster
 resource "hcp_vault_cluster" "example_vault_cluster" {
   hvn_id     = hcp_hvn.example_hvn.hvn_id
-  cluster_id = "${var.Name}-vault-cluster"
-  public_endpoint = false
-  tier = "dev"
+  cluster_id = var.hcp_vault_cluster_id #"${var.Name}-vault-cluster"
+  tier = "dev" # dev, standard_small, standard_medium, standard_large, starter_small
+  public_endpoint = false # default is false
 }
 
 resource "hcp_vault_cluster_admin_token" "example_vault_admin_token" {

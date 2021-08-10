@@ -8,7 +8,7 @@ provider "aws" {
     tags = {
       Name  = var.Name
       owner = var.owner
-      TTL   = var.TTL 
+      TTL   = var.TTL
     }
   }
 }
